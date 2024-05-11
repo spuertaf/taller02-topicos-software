@@ -1,10 +1,16 @@
 FROM python:3.11-slim
 
-ENV PYTHONBUFFERED True
+# Create app directory
+WORKDIR /usr/src/app
 
-WORKDIR /flask-app
-COPY . /flask-app/
+# Copy the Flask app source to the working directory
+COPY . .
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Install Flask
+RUN pip install -r requirements.txt
 
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
+# Expose the required port
+EXPOSE 8080
+
+# Specify the command to run the Flask app
+CMD ["python", "randomquotes.py"]
