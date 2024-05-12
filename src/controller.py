@@ -16,6 +16,11 @@ from src.pokeneas.pokeneas import get_random_pokenea
 
 controller_bp = Blueprint("controller", __name__)
 
+@controller_bp.route("/", methods=["GET"])
+def home():
+    return render_template("index.html")
+
+
 @controller_bp.route("/pokenea", methods=["GET"])
 def get_pokenea() -> Response:
     host_info:dict = get_host_info()
@@ -25,6 +30,7 @@ def get_pokenea() -> Response:
         cut_json(pokenea.json(), "name", "ability", "height")
     ) 
     return jsonify(response), 200
+
 
 @controller_bp.route("/phrase", methods = ["GET"])
 def get_phrase() -> Response:
