@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -10,7 +10,7 @@ COPY . .
 RUN pip install -r requirements.txt
 
 # Expose the required port
-EXPOSE 80
+EXPOSE 8080
 
 # Specify the command to run the Flask app
 CMD ["python", "main.py"]
