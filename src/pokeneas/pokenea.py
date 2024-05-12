@@ -19,7 +19,7 @@ class Pokenea:
         return {
             "id": self._id,
             "name":self._name,
-            "height":self._name,
+            "height":self._height,
             "ability":self._ability,
             "image": self._image,
             "philosophical_frase": self._philosophical_frase
